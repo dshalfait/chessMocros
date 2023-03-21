@@ -3,7 +3,7 @@ from Piece import Piece
 
 
 class Player:
-    color: str = None
+    color: Color = None
     score: int = 0
     pieces: list[Piece]
 
