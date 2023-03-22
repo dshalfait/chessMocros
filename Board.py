@@ -1,6 +1,5 @@
 from Piece import Piece
 from enums import Color, Kind, Rows, Cols
-import copy
 
 
 class Board:
@@ -42,7 +41,6 @@ class Board:
 
         self.init_pawn_row(Rows.TWO)
         self.init_pawn_row(Rows.SEVEN)
-
     def plot(self, color: Color = Color.BLACK):
         col_list_letter = [(list(Cols)[i]).name for i in range(len(Cols))]
         row_list = list(reversed(range(len(Rows))))
