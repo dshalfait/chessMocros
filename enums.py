@@ -1,13 +1,22 @@
-from enum import Enum, IntEnum
+from enum import Enum, IntEnum, EnumMeta
 
 
-class Color(Enum):
+class MetaEnum(EnumMeta):
+    def __contains__(cls, item):
+        try:
+            cls(item)
+        except ValueError:
+            return False
+        return True
+
+
+class Color(Enum, metaclass=MetaEnum):
     BLACK = "B"
     WHITE = "W"
     EMPTY = "-"
 
 
-class Kind(Enum):
+class Kind(Enum, metaclass=MetaEnum):
     KING = "K"
     QUEEN = "Q"
     BISHOP = "B"
@@ -17,7 +26,7 @@ class Kind(Enum):
     EMPTY = "-"
 
 
-class Rows(IntEnum):
+class Rows(IntEnum, metaclass=MetaEnum):
     ONE = 0
     TWO = 1
     THREE = 2
@@ -28,7 +37,7 @@ class Rows(IntEnum):
     EIGHT = 7
 
 
-class Cols(IntEnum):
+class Cols(IntEnum, metaclass=MetaEnum):
     A = 0
     B = 1
     C = 2
